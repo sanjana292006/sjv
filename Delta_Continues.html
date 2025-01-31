@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delta Contact</title>
+    <style>
+        .heading{
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+        
+        }
+        .textbox{
+            
+            align-items: center;
+            font-size: medium;
+            font-family: Arial, Helvetica, sans-serif;
+            color: rgb(255, 255, 255);
+            border-radius: 25px;
+            background: url(paper.gif);
+            background-position: left top;
+            background-repeat: repeat;
+            width: 200px;
+            height: 150px;
+        }
+        .parallax {
+  background-image: url("sample.jpg");
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 1;
+}
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  //--background-size: 50vw;
+  --background-size: unquote('min(100vw, 40em)');
+}
+
+html {
+  font-size: calc(100% + 0.5vw);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition-duration: 0.001s !important;
+  }
+}
+
+.container {
+  background: linear-gradient(100deg, #402, #006);
+  padding: 2em;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 460 55'%3E%3Cg fill='none' fill-rule='evenodd' stroke='%23fff' stroke-width='7' opacity='.1'%3E%3Cpath d='M-345 34.5s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 48.3 0 48.3s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/%3E%3Cpath d='M-345 20.7s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 34.5 0 34.5s115-13.8 115-13.8S172.5 6.9 230 6.9s115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8m-920 27.6s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 62.1 0 62.1s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/%3E%3Cpath d='M-345 6.9s57.5-13.8 115-13.8S-115 6.9-115 6.9-57.5 20.7 0 20.7 115 6.9 115 6.9 172.5-6.9 230-6.9 345 6.9 345 6.9s57.5 13.8 115 13.8S575 6.9 575 6.9'/%3E%3Cpath d='M-345-6.9s57.5-13.8 115-13.8S-115-6.9-115-6.9-57.5 6.9 0 6.9 115-6.9 115-6.9s57.5-13.8 115-13.8S345-6.9 345-6.9 402.5 6.9 460 6.9 575-6.9 575-6.9m-920 69s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 75.9 0 75.9s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/%3E%3C/g%3E%3C/svg%3E%0A"),
+    linear-gradient(80deg, #202, #006);
+  background-position: 50% 50%;
+  animation: background-move 10s linear infinite;
+  background-size: 100vw auto, 100% 100%;
+  background-size: unquote('max(100vw, 30em)') auto, 100% 100%;
+}
+
+@keyframes background-move {
+  0% { background-position: 0 0, 0 0; }
+  100% { 
+    background-position: 100vw 0, 0 0;
+    background-position: unquote('max(100vw, 40em)')  0, 0 0;
+  }
+}
+
+.input-group {
+  width: 100%;
+  max-width: 20em;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+
+  @supports (mix-blend-mode: darken) {
+    position: relative;
+    mix-blend-mode: lighten;
+
+    &__label {
+      position: absolute;
+      left: 3em;
+      top: -0.28em;
+      background: #000;
+    }
+  }
+
+  &__label {
+    padding: 0 0.5em;
+    margin-bottom: 0.5em;
+    text-transform: uppercase;
+    font-size: 0.875em;
+    letter-spacing: 0.1em;
+    color: #ccd;
+    color: rgba(255, 220, 255, 0.6);
+    cursor: pointer;
+  }
+
+  &__input {
+    color: #fff;
+    font-size: 1.25rem;
+    line-height: 1;
+    border-style: none;
+    outline: none;
+    // height calc line-height + (vertical-padding * 2) + (vertical-border * 2)
+    height: calc(1em + 1.6em + 0.5em);
+    width: 100%;
+    padding: 0.8em 1em;
+    border: 0.25em solid transparent;
+    background-image: linear-gradient(#000, #000),
+      linear-gradient(120deg, #f09 0%, #0ff 50%, #9f0 100%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    border-radius: 1.8em;
+    background-size: 200% 100%;
+    transition: background-position 0.8s ease-out;
+    
+    &:hover {
+      background-position: 100% 0;
+    }
+
+    &:focus {
+      outline: 2px dashed #ad2b89;
+      outline-offset: 0.5em;
+    }
+  }
+}
+
+
+button:hover {
+    background-color: #45a049; 
+}
+            .inputtextbox{
+                font-size: 14px;
+                border-radius: 6px;
+                line-height: 1.5;
+                padding: 5px 10px;
+                transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
+                border: 2px solid #dee1e2;
+                color: rgb(14, 14, 16);
+                background: #dee1e2;
+                display: block;
+                height: 36px;}
+                :hover {
+                    border-color: #ccc;
+                }
+                :focus{
+                    border-color: #9147ff;
+                    background: #fff;
+                }
+                @import url(https://fonts.googleapis.com/css?family=Hind:700);
+
+body {
+	font-family: 'Hind', sans-serif;
+	font-size: 400%;
+	color: #fff;
+	background: #000000;
+	text-align: center;
+}
+@keyframes test {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    filter: blur(0.2ex);
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+    filter: blur(0ex);
+  }
+}
+
+body p {
+  font-size: 32px;
+  text-align: center;
+}
+
+body #one {
+  animation: test 2.6s linear;
+}
+
+body #two {
+  animation: test 2s linear;
+}
+
+body #three {
+  animation: test 1.5s linear;
+}
+
+body #four {
+  animation: test 2s linear;
+}
+
+body #five {
+  animation: test 2.6s linear;
+}
+.button-33 {
+  background-color: #c2fbd7;
+  border-radius: 100px;
+  box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+  color: green;
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-33:hover {
+  box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+} 
+.input_text{
+font-size: 14px;
+border-radius: 6px;
+line-height: 1.5;
+padding: 5px 10px;
+transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
+border: 2px solid #dee1e2;
+color: rgb(14, 14, 16);
+background: #dee1e2;
+display: block;
+height: 36px;}
+:hover {
+    border-color: #ccc;
+}
+:focus{
+    border-color: #9147ff;
+    background: #fff;
+}
+
+    </style>
+    <script src='Delta_Continues.js'></script>
+</head>
+<body bgcolor="black">
+    
+    <center>
+
+        <div class="heading">
+                
+</div>
+<div class="parallax"></div>
+<div class="textbox">
+    <b>
+        <p>
+            <span id="one">D</span>
+            <span id="two">e</span>
+            <span id="three">l</span>
+            <span id="four">t</span>
+            <span id="five">a</span>
+          </p>
+        
+        <div class="input-group">
+            
+            <form action="contact.txt" method="post">
+        <span>First Name : <input type="textbox" id="fname" class="input_text"><br>
+        Last Name : <input type="textbox" id="lname" class="input_text"><br>
+        Phone No. : <input type="textbox" id="pno" class="input_text"><br>
+        Email ID : <input type="textbox" id="ebox" class="input_text"></span>
+        <br>
+
+        
+        <input type="button" value="Submit" onclick="jv_don()" class="button-33">
+        <a href="Delta_Never_Dries.html">
+        </form>
+        </div>
+    </center>
+    </b>
+    </div>
+</body>
+</html>
